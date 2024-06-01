@@ -6,20 +6,20 @@
 %endif
 
 %define major %(echo %{version} |cut -d. -f1)
-%define libicudata %mklibname %{name}data %{major}
-%define libicui18n %mklibname %{name}i18n %{major}
-%define libicuio %mklibname %{name}io %{major}
-%define libicutest %mklibname %{name}test %{major}
-%define libicutu %mklibname %{name}tu %{major}
-%define libicuuc %mklibname %{name}uc %{major}
-%define devname %mklibname %{name} -d
-%define lib32icudata %mklib32name %{name}data %{major}
-%define lib32icui18n %mklib32name %{name}i18n %{major}
-%define lib32icuio %mklib32name %{name}io %{major}
-%define lib32icutest %mklib32name %{name}test %{major}
-%define lib32icutu %mklib32name %{name}tu %{major}
-%define lib32icuuc %mklib32name %{name}uc %{major}
-%define dev32name %mklib32name %{name} -d
+%define libicudata %mklibname icudata %{major}
+%define libicui18n %mklibname icui18n %{major}
+%define libicuio %mklibname icuio %{major}
+%define libicutest %mklibname icutest %{major}
+%define libicutu %mklibname icutu %{major}
+%define libicuuc %mklibname icuuc %{major}
+%define devname %mklibname icu -d
+%define lib32icudata %mklib32name icudata %{major}
+%define lib32icui18n %mklib32name icui18n %{major}
+%define lib32icuio %mklib32name icuio %{major}
+%define lib32icutest %mklib32name icutest %{major}
+%define lib32icutu %mklib32name icutu %{major}
+%define lib32icuuc %mklib32name icuuc %{major}
+%define dev32name %mklib32name icu -d
 #define beta rc
 %ifarch %arm
 %define _disable_lto %nil
@@ -42,7 +42,7 @@
 %endif
 
 Summary:	International Components for Unicode
-Name:		icu
+Name:		icu74
 Version:	74.2
 Release:	%{?beta:0.%{beta}.}1
 License:	MIT
@@ -403,9 +403,9 @@ rm -rf	%{buildroot}%{_bindir}/icu-config \
 %{_mandir}/man8/*
 
 %files data
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/%{fsversion}
-%{_datadir}/%{name}/%{fsversion}/icudt%{major}l.dat
+%dir %{_datadir}/icu
+%dir %{_datadir}/icu/%{fsversion}
+%{_datadir}/icu/%{fsversion}/icudt%{major}l.dat
 
 %files -n %{libicudata}
 %{_libdir}/libicudata.so.*
